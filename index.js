@@ -7,12 +7,14 @@ const app = express();
 const server = http.createServer(app);
 
 // Initialize Socket.IO with CORS options
-const io = new Server(server, {
-    cors: {
-        origin: "https://awhere-93a4f.web.app", // Allow requests from your Next.js app
-        methods: ["GET", "POST"],
-    },
-});
+// const io = new Server(server, {
+//     cors: {
+//         origin: "https://awhere-93a4f.web.app", // Allow requests from your Next.js app
+//         methods: ["GET", "POST"],
+//     },
+// });
+
+const io = new Server(server, {cors: {origin:"*"}});
 
 app.use(cors());
 app.use(express.json());
