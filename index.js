@@ -24,8 +24,8 @@ let userLocations = {};
 io.on('connection', (socket) => {
     console.log('New client connected');
 
-    socket.on('updateLocation', ({ userId, latitude, longitude, speed, heading ,altitude,name,group}) => {
-        userLocations[userId] = { latitude, longitude, speed, heading ,altitude,name,group};
+    socket.on('updateLocation', ({ userId, latitude, longitude, speed, heading ,altitude,name,group,dangerMode,GroupdangerMode}) => {
+        userLocations[userId] = { latitude, longitude, speed, heading ,altitude,name,group,dangerMode,GroupdangerMode};
         console.log(userLocations);
         io.emit('locationUpdate', userLocations); // Broadcast to all connected clients
     });
