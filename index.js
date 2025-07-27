@@ -24,9 +24,9 @@ let userLocations = {};
 io.on('connection', (socket) => {
     console.log('New client connected');
 
-    socket.on('updateLocation', ({ userId, latitude, longitude, speed, heading ,altitude,name,group}) => {
-        userLocations[userId] = { latitude, longitude, speed, heading ,altitude,name,group};
-        console.log(userLocations);
+    socket.on('updateLocation', ({ userId, latitude, longitude, speed, heading ,altitude,name,group,created_At,updated_At}) => {
+        userLocations[userId] = { latitude, longitude, speed, heading ,altitude,name,group,created_At,updated_At};
+        // console.log(userLocations);
         io.emit('locationUpdate', userLocations); // Broadcast to all connected clients
     });
 
@@ -35,7 +35,7 @@ io.on('connection', (socket) => {
     });
 });
 
-const PORT = 3000;
+const PORT = 9000;
 server.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
